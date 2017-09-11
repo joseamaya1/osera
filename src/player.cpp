@@ -710,7 +710,7 @@ bool Player::canWalkthrough(const Creature* creature) const
 	}
 
 	const Tile* playerTile = player->getTile();
-	if (playerTile && (playerTile->hasFlag(TILESTATE_PROTECTIONZONE) || (player->getLevel() < 100))) {
+	if (!playerTile || !playerTile->hasFlag(TILESTATE_PROTECTIONZONE)) {
 		return false;
 	}
 
@@ -746,7 +746,7 @@ bool Player::canWalkthroughEx(const Creature* creature) const
 	}
 
 	const Tile* playerTile = player->getTile();
-	return playerTile && (playerTile->hasFlag(TILESTATE_PROTECTIONZONE) || player->getLevel() < 100);
+	return playerTile && playerTile->hasFlag(TILESTATE_NONE);
 }
 
 void Player::onReceiveMail() const

@@ -494,8 +494,7 @@ void ProtocolGame::parsePacket(NetworkMessage& msg)
 		}));
 		if (recvbyte == 0x0F) {
 			// we need to make the player pointer != null in this part, game.cpp release is the first step
-			// login(player->getName(), player->getAccount(), player->operatingSystem);
-			disconnect();
+		        login(player->getName(), player->getAccount(), player->operatingSystem);
 			return;
 		}
 
